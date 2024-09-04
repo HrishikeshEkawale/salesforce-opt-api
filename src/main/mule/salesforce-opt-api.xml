@@ -129,10 +129,21 @@ output application/json
                 <ee:set-variable variableName="id">attributes.uriParams.'id'</ee:set-variable>
             </ee:variables>
         </ee:transform>
-        <flow-ref doc:name="sfdc-call-get-info" doc:id="850f8b32-713a-4ac7-b660-b0bd08871a8e" name="sfdc-call-get-info"/>
+        <flow-ref doc:name="sfdc-call-get-info" doc:id="850f8b32-713a-4ac7-b660-b0bd08871a8e" name="sfdc-call-get-info" />
     </flow>
     <flow name="post:\opportunities:application\json:salesforce-opt-api-config">
         <logger level="INFO" message="post:\opportunities:application\json:salesforce-opt-api-config" />
-		<flow-ref doc:name="sfdc-call-create" doc:id="30ca50e2-c70f-44f4-839e-54b4d3efd90d" name="sfdc-call-create"/>
+        <flow-ref doc:name="sfdc-call-create" doc:id="30ca50e2-c70f-44f4-839e-54b4d3efd90d" name="sfdc-call-create" />
+    </flow>
+    <flow name="get:\opportunities:salesforce-opt-api-config">
+        <ee:transform doc:name="Transform Message" doc:id="e12cd3cb-71d3-4e8b-a2c8-50459b30f423" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+now()]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" message="#[payload]" />
     </flow>
 </mule>
