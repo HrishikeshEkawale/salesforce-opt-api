@@ -1,0 +1,6 @@
+#%Catalog Descriptor 1.0
+projects:
+  - main: salesforce-opt-api.raml
+    assetId: salesforce-opt-api
+    version: 1.0.0
+    apiVersion: v1
