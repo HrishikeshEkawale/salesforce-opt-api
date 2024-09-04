@@ -1,4 +1,13 @@
 #%Catalog Descriptor 1.0
+triggerConditions:
+  version:
+  - 1.0.2
+  
+versionStrategyConditions:
+  minorIncrease:
+    branches:
+    - master
+
 projects:
   - main: salesforce-opt-api.raml
     assetId: salesforce-opt-api
