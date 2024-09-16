@@ -7,7 +7,7 @@
     <flow name="salesforce-opt-api-main">
         <http:listener config-ref="salesforce-opt-api-httpListenerConfig" path="/api/*">
             <non-repeatable-stream />
-			<http:response statusCode="#[vars.httpStatus default 200]">
+            <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
             </http:response>
             <http:error-response statusCode="#[vars.httpStatus default 500]">
@@ -137,7 +137,18 @@ output application/json
         <flow-ref doc:name="sfdc-call-create" doc:id="30ca50e2-c70f-44f4-839e-54b4d3efd90d" name="sfdc-call-create" />
     </flow>
     <flow name="get:\opportunities:salesforce-opt-api-config">
-        <ee:transform doc:name="Transform Message" doc:id="e12cd3cb-71d3-4e8b-a2c8-50459b30f423" >
+        <ee:transform doc:name="Transform Message" doc:id="e12cd3cb-71d3-4e8b-a2c8-50459b30f423">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+now()]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+        <logger level="INFO" message="#[payload]" />
+    </flow>
+    <flow name="get:\gettime:salesforce-opt-api-config">
+        <ee:transform doc:name="Transform Message" doc:id="9c244a4e-b72d-4514-9934-03be0a9c014e" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
