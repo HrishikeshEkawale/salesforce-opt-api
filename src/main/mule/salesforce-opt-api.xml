@@ -136,15 +136,7 @@ output application/json
         <logger level="INFO" message="post:\opportunities:application\json:salesforce-opt-api-config" />
         <flow-ref doc:name="sfdc-call-create" doc:id="30ca50e2-c70f-44f4-839e-54b4d3efd90d" name="sfdc-call-create" />
     </flow>
-    <flow name="get:\opportunities:salesforce-opt-api-config">
-        <ee:transform doc:name="Transform Message" doc:id="e12cd3cb-71d3-4e8b-a2c8-50459b30f423">
-            <ee:message>
-                <ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-now()]]></ee:set-payload>
-            </ee:message>
-        </ee:transform>
-        <logger level="INFO" message="#[payload]" />
+	<flow name="get:\deals:salesforce-opt-api-config">
+		<flow-ref doc:name="sfdc-call-get-deals" doc:id="65f90a5e-28c2-4b71-b544-400fb923e90a" name="sfdc-call-get-deals" />
     </flow>
 </mule>

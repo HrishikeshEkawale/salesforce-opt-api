@@ -70,4 +70,23 @@ payload]]></ee:set-payload>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="e347600d-9a1c-4d89-b142-fd6a00be705d" message="#[payload]"/>
 	</flow>
+	<flow name="sfdc-call-get-deals" doc:id="c1bae102-b66a-464f-8ff6-7b9d72108eb2" >
+		<salesforce:query doc:name="Query" doc:id="a540e958-bc43-4ac7-80b3-aec51e4fb96b" config-ref="Salesforce_Config">
+			<salesforce:salesforce-query ><![CDATA[select name, AccountNumber ,Active__c ,BillingAddress from account where name = :name]]></salesforce:salesforce-query>
+			<salesforce:parameters ><![CDATA[#[output application/java
+---
+{
+	name : attributes.headers.'user-name'
+}]]]></salesforce:parameters>
+		</salesforce:query>
+		<ee:transform doc:name="Transform Message" doc:id="fcc54c4c-4828-4a73-829f-b46dae8781c7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="998bdc9e-9a84-484f-b5b8-182f693c1eff" message="#[payload]"/>
+	</flow>
 </mule>

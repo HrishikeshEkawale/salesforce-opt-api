@@ -21,4 +21,14 @@ baseUri: https://salesforce-opt-api.us-e2.cloudhub.io/api
           application/json:
             example: !include /library/example/response/post-response.json
               
-            
+/deals:
+  get:
+    headers:
+      user-name: string
+    responses:
+          200:
+                body:
+                      application/json:
+                                
+
+              
