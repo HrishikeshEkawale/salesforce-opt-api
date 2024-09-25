@@ -26,8 +26,11 @@ baseUri: https://salesforce-opt-api.us-e2.cloudhub.io/api
         body:
           application/json:    
     
-
-  
-                                
-
-              
+/deals:
+  get:
+    headers:
+      user-name: string
+    responses:
+          200:
+                body:
+                      application/json:              
