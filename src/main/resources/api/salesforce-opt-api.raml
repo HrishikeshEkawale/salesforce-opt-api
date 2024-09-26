@@ -1,10 +1,14 @@
 #%RAML 1.0
 title: salesforce-opt-api
 baseUri: https://salesforce-opt-api.us-e2.cloudhub.io/api
+traits:
+  errorTraits: !include /library/trait.raml
+
 /opportunities:
   /{id}:
     get:
       description: "send Id in query parameter to get type and name"
+      is: [errorTraits]
       responses:
         200:
           body:
@@ -14,7 +18,7 @@ baseUri: https://salesforce-opt-api.us-e2.cloudhub.io/api
     body:
       application/json:
         example: !include /library/example/request/post-body.json
-
+    is: [errorTraits]
     responses:
       200:
         body:
@@ -23,6 +27,7 @@ baseUri: https://salesforce-opt-api.us-e2.cloudhub.io/api
     
 /deals:
   get:
+    is: [errorTraits]
     headers:
       user-name: string
     responses:
