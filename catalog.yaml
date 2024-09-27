@@ -12,6 +12,7 @@ projects:
       - sys-api
     documentation:
         Home: exchange-docs\home.md
-    triggerConditions:
-      branch:
-        - main
+versionStrategyConditions:
+  snapshot:
+    branch:
+      - develop
