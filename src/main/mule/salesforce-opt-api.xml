@@ -137,6 +137,6 @@ output application/json
         <flow-ref doc:name="sfdc-call-create" doc:id="30ca50e2-c70f-44f4-839e-54b4d3efd90d" name="sfdc-call-create" />
     </flow>
     <flow name="get:\deals:salesforce-opt-api-config">
-        <flow-ref doc:name="sfdc-call-get-deals" doc:id="c04ec34b-fdbb-48ca-aad7-76776edd134e" name="sfdc-call-get-deals" />
+		<flow-ref doc:name="sfdc-call-get-deals" doc:id="c04ec34b-fdbb-48ca-aad7-76776edd134e" name="sfdc-call-get-deals" />
     </flow>
 </mule>
