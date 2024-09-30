@@ -22,6 +22,6 @@ projects:
       fixed:
         branches:
           - master
-      triggerConditions: 
-        deploy:
-          - yes
+      triggerConditions:
+        branches:
+          - main
