@@ -2,7 +2,7 @@
 projects:
   - main: src\main\resources\api\salesforce-opt-api.raml
     assetId: salesforce-opt-api
-    version: 2.0.4
+    version: 2.0.11
     apiVersion: v2
     contact:
       name: 'Hrishikesh Ekawale'
@@ -12,7 +12,16 @@ projects:
       - sys-api
     documentation:
         Home: exchange-docs\home.md
-versionStrategyConditions:
-  snapshot:
-    branch:
-      - develop
+    versionStrategyConditions:
+      minorIncrease:
+        branch:
+          - main
+      snapshot:
+        branch:
+          - develop
+      fixed:
+        branches:
+          - master
+      triggerConditions: 
+        deploy:
+          - yes
