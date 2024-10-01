@@ -6,7 +6,7 @@ projects:
     apiVersion: v1
     contact:
       name: 'Hrishikesh Ekawale'
-      email: 'test@gmail.com'
+      email: 'testemail@gmail.com'
     tags:
       - auther
       - sys-api
