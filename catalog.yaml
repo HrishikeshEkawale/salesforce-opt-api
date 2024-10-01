@@ -2,7 +2,7 @@
 projects:
   - main: src\main\resources\api\salesforce-opt-api.raml
     assetId: salesforce-opt-api
-    version: 3.0.0
+    version: 3.0.1
     apiVersion: v3
     contact:
       name: 'Hrishikesh Ekawale'
