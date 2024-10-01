@@ -18,7 +18,7 @@ projects:
           - main
       majorIncrease:
         branch:
-          - main
+          - master
       snapshot:
         branch:
           - develop
