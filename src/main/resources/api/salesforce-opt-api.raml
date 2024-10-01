@@ -4,6 +4,15 @@ baseUri: https://salesforce-opt-api.us-e2.cloudhub.io/api
 traits:
   errorTraits: !include /library/trait.raml
 
+
+  trait:
+    is:
+      - errorTraits
+    responses:
+      "200":
+        body:
+          application/json:
+            type: any
 /opportunities:
   /{id}:
     get:
@@ -33,4 +42,8 @@ traits:
     responses:
           200:
                 body:
-                      application/json:              
+                      application/json:     
+/testApiCatalog:
+  get:
+    is:
+      - trait
