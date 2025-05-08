@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:validation="http://www.mulesoft.org/schema/mule/validation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="     http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd     http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd     http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd     http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+  <munit:config name="test_suite_salesforce_opt_api_main_1746685.xml"/>
+  <munit:test name="test_suite_salesforce_opt_api_main_0" description="Test the happy path for the salesforce-opt-api-main flow when an HTTP request is received and routed successfully by the APIkit router, ensuring the HTTP listener and router are triggered and the response is returned as expected.">
+    <!-- Behavior section to set up the test environment -->
+    <munit:behavior>
+      <!-- Mock the APIkit Router to return a successful response -->
+      <munit-tools:mock-when doc:name="Mock APIkit Router" processor="apikit:router">
+        <munit-tools:with-attributes>
+          <munit-tools:with-attribute attributeName="config-ref" whereValue="salesforce-opt-api-config"/>
+        </munit-tools:with-attributes>
+        <munit-tools:then-return>
+          <munit-tools:payload value="#[MunitTools::getResourceAsString('test_suite_salesforce_opt_api_main_1746685/mock_data_scenario_0/response_payload.json')]" mediaType="application/json" encoding="UTF-8"/>
+          <munit-tools:variables>
+            <munit-tools:variable key="httpStatus" value="#[200]"/>
+            <munit-tools:variable key="outboundHeaders" value="#[{'Content-Type': 'application/json'}]"/>
+          </munit-tools:variables>
+        </munit-tools:then-return>
+      </munit-tools:mock-when>
+      <!-- Set up the HTTP request event with payload -->
+      <munit:set-event doc:name="Set HTTP Request Event">
+        <munit:payload value="#[MunitTools::getResourceAsString('test_suite_salesforce_opt_api_main_1746685/mock_data_scenario_0/request_payload.json')]" mediaType="application/json" encoding="UTF-8"/>
+      </munit:set-event>
+    </munit:behavior>
+    <!-- Execution section to run the flow -->
+    <munit:execution>
+      <!-- Execute the main flow -->
+      <flow-ref doc:name="Execute salesforce-opt-api-main" name="salesforce-opt-api-main"/>
+    </munit:execution>
+    <!-- Validation section to verify the results -->
+    <munit:validation>
+      <!-- Verify that the APIkit router was triggered -->
+      <munit-tools:verify-call doc:name="Verify APIkit Router was triggered" processor="apikit:router" times="1">
+        <munit-tools:with-attributes>
+          <munit-tools:with-attribute attributeName="config-ref" whereValue="salesforce-opt-api-config"/>
+        </munit-tools:with-attributes>
+      </munit-tools:verify-call>
+      <!-- Assert that the HTTP status code is 200 -->
+      <munit-tools:assert-that doc:name="Assert HTTP Status Code" expression="#[vars.httpStatus default 200]" is="#[MunitTools::equalTo(200)]"/>
+      <!-- Assert that the response payload is not null -->
+      <munit-tools:assert-that doc:name="Assert Response Payload" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+    </munit:validation>
+  </munit:test>
+</mule>
