@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "Name": "Acme Corp",
+      "AccountNumber": "A12345",
+      "Active__c": true,
+      "BillingAddress": {
+        "street": "123 Market St",
+        "city": "San Francisco",
+        "state": "CA",
+        "postalCode": "94105",
+        "country": "USA"
+      }
+    }
+  ],
+  "totalSize": 1,
+  "done": true
+}
