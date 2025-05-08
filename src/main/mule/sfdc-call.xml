@@ -35,7 +35,7 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="b41284cb-4fa7-410a-8386-3027381d4808" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b41284cb-4fa7-410a-8386-3027381d4808" message='#["Retrieved opportunity details for ID: " ++ vars.id ++ ", Name: " ++ (payload[0].Name default "Not Found")]'/>
 	</flow>
 	<flow name="sfdc-call-create" doc:id="090d1294-2b6c-4d9e-b768-b4b963d74ceb" >
 		<ee:transform doc:name="Transform Message" doc:id="4a6e660a-3ffb-418a-a280-2f640075426b" >
@@ -68,7 +68,7 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="e347600d-9a1c-4d89-b142-fd6a00be705d" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e347600d-9a1c-4d89-b142-fd6a00be705d" message='#["Successfully created/updated " ++ sizeOf(payload) ++ " opportunities"]'/>
 	</flow>
 	<flow name="sfdc-call-get-deals" doc:id="c1bae102-b66a-464f-8ff6-7b9d72108eb2" >
 		<salesforce:query doc:name="Query" doc:id="a540e958-bc43-4ac7-80b3-aec51e4fb96b" config-ref="Salesforce_Config">
@@ -87,6 +87,6 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="998bdc9e-9a84-484f-b5b8-182f693c1eff" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="998bdc9e-9a84-484f-b5b8-182f693c1eff" message='#["Retrieved account details for user: " ++ attributes.headers."user-name" ++ ", Found records: " ++ sizeOf(payload)]'/>
 	</flow>
 </mule>

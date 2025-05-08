@@ -133,7 +133,7 @@ output application/json
         <flow-ref doc:name="sfdc-call-get-info" doc:id="850f8b32-713a-4ac7-b660-b0bd08871a8e" name="sfdc-call-get-info" />
     </flow>
     <flow name="post:\opportunities:application\json:salesforce-opt-api-config">
-        <logger level="INFO" message="post:\opportunities:application\json:salesforce-opt-api-config" />
+        <logger level="INFO" message='#["Received request to create opportunity with ID: " ++ (payload.Id default "")]' />
         <flow-ref doc:name="sfdc-call-create" doc:id="30ca50e2-c70f-44f4-839e-54b4d3efd90d" name="sfdc-call-create" />
     </flow>
     <flow name="get:\deals:salesforce-opt-api-config">
