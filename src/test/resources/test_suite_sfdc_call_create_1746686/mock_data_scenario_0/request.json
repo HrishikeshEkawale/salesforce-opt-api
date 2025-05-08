@@ -1,0 +1,30 @@
+[
+  {
+    "Id": "0061N00000XyZabQAF",
+    "opportunity_id": "OPP-12345",
+    "opportunity_name": "Enterprise Cloud Migration",
+    "account_id": "0011N00000AbcDefQAF",
+    "account_name": "Acme Corporation",
+    "global_account": "Global Acme Holdings",
+    "business_type": "New Business",
+    "opportunity_owner": "Jane Doe",
+    "sales_region": "North America",
+    "deal_id": "DEAL-98765",
+    "close_date": "2024-06-15T17:00:00Z",
+    "last_modified_date": "2024-06-10T12:30:00Z"
+  },
+  {
+    "Id": "0061N00000XyZacQAF",
+    "opportunity_id": "OPP-12346",
+    "opportunity_name": "Data Center Modernization",
+    "account_id": "0011N00000AbcDegQAF",
+    "account_name": "Beta Industries",
+    "global_account": "Global Beta Group",
+    "business_type": "Upsell",
+    "opportunity_owner": "John Smith",
+    "sales_region": "Europe",
+    "deal_id": "DEAL-98766",
+    "close_date": "2024-07-01T10:00:00Z",
+    "last_modified_date": "2024-06-11T09:15:00Z"
+  }
+]
